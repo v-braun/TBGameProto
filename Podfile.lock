@@ -1,0 +1,20 @@
+PODS:
+  - CDAlertView (0.9.1)
+  - PMSuperButton (2.2.0)
+
+DEPENDENCIES:
+  - CDAlertView
+  - PMSuperButton
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CDAlertView
+    - PMSuperButton
+
+SPEC CHECKSUMS:
+  CDAlertView: 89450acbd8d882868f2fc4ec6d2b6f128710c779
+  PMSuperButton: 5e7b2eb79468dba1ced3fd00e47a7ce88a1fa664
+
+PODFILE CHECKSUM: b1ef95a6e7ba2af3e33e36430d049f022e07ef62
+
+COCOAPODS: 1.5.3

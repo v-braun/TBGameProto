@@ -1,0 +1,414 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2A02DC9B2313C13D00F71048 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A02DC9A2313C13D00F71048 /* AppDelegate.swift */; };
+		2A02DC9D2313C13D00F71048 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A02DC9C2313C13D00F71048 /* ViewController.swift */; };
+		2A02DCA02313C13E00F71048 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A02DC9E2313C13E00F71048 /* Main.storyboard */; };
+		2A02DCA22313C13F00F71048 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A02DCA12313C13F00F71048 /* Assets.xcassets */; };
+		2A02DCA52313C13F00F71048 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A02DCA32313C13F00F71048 /* LaunchScreen.storyboard */; };
+		2A3519832313C4BA004D8C79 /* GCConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3519822313C4BA004D8C79 /* GCConnection.swift */; };
+		2FA922F69A185116EDEE17E4 /* Pods_TBGameProto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8099EA79E088A91D14E75529 /* Pods_TBGameProto.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2A02DC972313C13D00F71048 /* TBGameProto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TBGameProto.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A02DC9A2313C13D00F71048 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2A02DC9C2313C13D00F71048 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2A02DC9F2313C13E00F71048 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2A02DCA12313C13F00F71048 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2A02DCA42313C13F00F71048 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2A02DCA62313C13F00F71048 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A3519822313C4BA004D8C79 /* GCConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCConnection.swift; sourceTree = "<group>"; };
+		4E1BDD05C479949436DB1431 /* Pods-TBGameProto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TBGameProto.release.xcconfig"; path = "Pods/Target Support Files/Pods-TBGameProto/Pods-TBGameProto.release.xcconfig"; sourceTree = "<group>"; };
+		8099EA79E088A91D14E75529 /* Pods_TBGameProto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TBGameProto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC3F9D4708B6F568C317F41B /* Pods-TBGameProto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TBGameProto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TBGameProto/Pods-TBGameProto.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2A02DC942313C13D00F71048 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FA922F69A185116EDEE17E4 /* Pods_TBGameProto.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		152CCC85265FB5769EA3448F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8099EA79E088A91D14E75529 /* Pods_TBGameProto.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2A02DC8E2313C13D00F71048 = {
+			isa = PBXGroup;
+			children = (
+				2A02DC992313C13D00F71048 /* TBGameProto */,
+				2A02DC982313C13D00F71048 /* Products */,
+				2B1F3B06FB407789F8AA8576 /* Pods */,
+				152CCC85265FB5769EA3448F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		2A02DC982313C13D00F71048 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2A02DC972313C13D00F71048 /* TBGameProto.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2A02DC992313C13D00F71048 /* TBGameProto */ = {
+			isa = PBXGroup;
+			children = (
+				2A02DC9A2313C13D00F71048 /* AppDelegate.swift */,
+				2A02DC9C2313C13D00F71048 /* ViewController.swift */,
+				2A02DC9E2313C13E00F71048 /* Main.storyboard */,
+				2A02DCA12313C13F00F71048 /* Assets.xcassets */,
+				2A02DCA32313C13F00F71048 /* LaunchScreen.storyboard */,
+				2A02DCA62313C13F00F71048 /* Info.plist */,
+				2A3519822313C4BA004D8C79 /* GCConnection.swift */,
+			);
+			path = TBGameProto;
+			sourceTree = "<group>";
+		};
+		2B1F3B06FB407789F8AA8576 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CC3F9D4708B6F568C317F41B /* Pods-TBGameProto.debug.xcconfig */,
+				4E1BDD05C479949436DB1431 /* Pods-TBGameProto.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2A02DC962313C13D00F71048 /* TBGameProto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A02DCA92313C13F00F71048 /* Build configuration list for PBXNativeTarget "TBGameProto" */;
+			buildPhases = (
+				C821FCA92CD3EE3BF117D9E1 /* [CP] Check Pods Manifest.lock */,
+				2A02DC932313C13D00F71048 /* Sources */,
+				2A02DC942313C13D00F71048 /* Frameworks */,
+				2A02DC952313C13D00F71048 /* Resources */,
+				93D547AE6A4E65F29441A0BD /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TBGameProto;
+			productName = TBGameProto;
+			productReference = 2A02DC972313C13D00F71048 /* TBGameProto.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A02DC8F2313C13D00F71048 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = "Viktor Braun - Software Development";
+				TargetAttributes = {
+					2A02DC962313C13D00F71048 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+				};
+			};
+			buildConfigurationList = 2A02DC922313C13D00F71048 /* Build configuration list for PBXProject "TBGameProto" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2A02DC8E2313C13D00F71048;
+			productRefGroup = 2A02DC982313C13D00F71048 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2A02DC962313C13D00F71048 /* TBGameProto */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2A02DC952313C13D00F71048 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A02DCA52313C13F00F71048 /* LaunchScreen.storyboard in Resources */,
+				2A02DCA22313C13F00F71048 /* Assets.xcassets in Resources */,
+				2A02DCA02313C13E00F71048 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		93D547AE6A4E65F29441A0BD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TBGameProto/Pods-TBGameProto-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CDAlertView/CDAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/PMSuperButton/PMSuperButton.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CDAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PMSuperButton.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TBGameProto/Pods-TBGameProto-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C821FCA92CD3EE3BF117D9E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TBGameProto-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2A02DC932313C13D00F71048 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A3519832313C4BA004D8C79 /* GCConnection.swift in Sources */,
+				2A02DC9D2313C13D00F71048 /* ViewController.swift in Sources */,
+				2A02DC9B2313C13D00F71048 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2A02DC9E2313C13E00F71048 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A02DC9F2313C13E00F71048 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2A02DCA32313C13F00F71048 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A02DCA42313C13F00F71048 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2A02DCA72313C13F00F71048 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2A02DCA82313C13F00F71048 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2A02DCAA2313C13F00F71048 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC3F9D4708B6F568C317F41B /* Pods-TBGameProto.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MT53UGXK6Y;
+				INFOPLIST_FILE = TBGameProto/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = vbr.TBGameProto2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2A02DCAB2313C13F00F71048 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E1BDD05C479949436DB1431 /* Pods-TBGameProto.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MT53UGXK6Y;
+				INFOPLIST_FILE = TBGameProto/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = vbr.TBGameProto2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2A02DC922313C13D00F71048 /* Build configuration list for PBXProject "TBGameProto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A02DCA72313C13F00F71048 /* Debug */,
+				2A02DCA82313C13F00F71048 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A02DCA92313C13F00F71048 /* Build configuration list for PBXNativeTarget "TBGameProto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A02DCAA2313C13F00F71048 /* Debug */,
+				2A02DCAB2313C13F00F71048 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A02DC8F2313C13D00F71048 /* Project object */;
+}

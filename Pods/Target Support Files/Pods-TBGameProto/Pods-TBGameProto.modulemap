@@ -1,0 +1,6 @@
+framework module Pods_TBGameProto {
+  umbrella header "Pods-TBGameProto-umbrella.h"
+
+  export *
+  module * { export * }
+}
