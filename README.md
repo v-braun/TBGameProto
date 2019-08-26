@@ -3,13 +3,13 @@
 
 By [v-braun - viktor-braun.de](https://viktor-braun.de).
 
-[![](https://img.shields.io/github/license/v-braun/TBGameProto.svg?style=flat-square)](https://github.com/v-braun/TBGameProto/blob/master/LICENSE)
+<!-- [![](https://img.shields.io/github/license/v-braun/TBGameProto.svg?style=flat-square)](https://github.com/v-braun/TBGameProto/blob/master/LICENSE)
 [![Build Status](https://img.shields.io/travis/v-braun/TBGameProto.svg?style=flat-square)](https://travis-ci.org/v-braun/TBGameProto)
-![PR welcome](https://img.shields.io/badge/PR-welcome-green.svg?style=flat-square)
+![PR welcome](https://img.shields.io/badge/PR-welcome-green.svg?style=flat-square) -->
 
-<p align="center">
+<!-- <p align="center">
 <img width="70%" src="https://via.placeholder.com/800x480.png?text=this%20is%20a%20placeholder%20for%20the%20project%20banner" />
-</p>
+</p> -->
 
 
 ## Description
