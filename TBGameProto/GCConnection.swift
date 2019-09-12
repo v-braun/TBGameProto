@@ -133,25 +133,25 @@ public class GCConnection{
         return result
     }
     
-//    func findTurnbasedMatch(minPlayers: Int, maxPlayers: Int, withTimeout : DispatchTime)throws -> TurnBasedMatch{
-//
-//        if activeMatch != nil {
-//            throw createError(withMessage: "there is already an active match")
-//        }
-//
-//        let request = GKMatchRequest()
-//        request.minPlayers = minPlayers
-//        request.maxPlayers = maxPlayers
-//
-//        let result = TurnBasedMatch(rq: request)
-//        result.find(timeout: withTimeout)
-//
-//        _currentMatch = result
-//
-//        return result
-//
-//
-//    }
+    func findTurnbasedMatch(minPlayers: Int, maxPlayers: Int, withTimeout : DispatchTime)throws -> TurnBasedMatch{
+
+        if activeMatch != nil {
+            throw createError(withMessage: "there is already an active match")
+        }
+
+        let request = GKMatchRequest()
+        request.minPlayers = minPlayers
+        request.maxPlayers = maxPlayers
+
+        let result = TurnBasedMatch(rq: request)
+        result.find(timeout: withTimeout)
+
+        _currentMatch = result
+
+        return result
+
+
+    }
 }
 public enum DisconnectedReason{
     case matchEmpty
@@ -171,7 +171,7 @@ public protocol MatchHandler{
     func handle(playerDisconnected : GKPlayer)
 }
 
-public class TurnBasedMatch : MatchBase{
+public class TurnBasedMatch : MatchBase, GKLocalPlayerListener{
     
     fileprivate var _match : GKTurnBasedMatch?
     
@@ -180,6 +180,7 @@ public class TurnBasedMatch : MatchBase{
     }
     
     func find(timeout : DispatchTime){
+        
         DispatchQueue.main.asyncAfter(deadline: timeout, execute: {
             switch self.state{
             case .pending:
@@ -189,18 +190,77 @@ public class TurnBasedMatch : MatchBase{
             }
         })
         
+        self.state = .pending
+        
         GKTurnBasedMatch.find(for: _request, withCompletionHandler:{ (match, err) in
             if let err = err {
                 self.error(err)
             }
             else if let match = match {
                 self._match = match
-                
+                print("player-0", match.participants[0].player?.displayName)
+                print("player-1", match.participants[1].player?.displayName)
+                GKLocalPlayer.local.register(self)
             }
             else{
                 self.error(createError(withMessage: "received unexpected nil match"))
             }
         })
+    }
+    
+    public func player(_ player: GKPlayer, didRequestMatchWithRecipients recipientPlayers: [GKPlayer]) {
+        print("didRequestMatchWithRecipients")
+        self.updateState(.connected)
+    }
+    public func player(_ player: GKPlayer, didRequestMatchWithOtherPlayers playersToInvite: [GKPlayer]) {
+        print("didRequestMatchWithOtherPlayers")
+    }
+    public func player(_ player: GKPlayer, didAccept invite: GKInvite) {
+        print("didAccept invide")
+    }
+    
+    
+    public func player(_ player: GKPlayer, wantsToQuitMatch match: GKTurnBasedMatch) {
+        guard match.matchID == _match?.matchID else {return}
+        
+        DispatchQueue.main.async {
+            self.handler?.handle(playerDisconnected: player)
+        }
+    }
+    
+    public func player(_ player: GKPlayer, matchEnded match: GKTurnBasedMatch) {
+        guard match.matchID == _match?.matchID else {return}
+
+        self.updateState(.disconnected(reason: .matchEmpty))
+    }
+    
+    public func player(_ player: GKPlayer, receivedTurnEventFor match: GKTurnBasedMatch, didBecomeActive: Bool) {
+        guard match.matchID == _match?.matchID else {return}
+        match.loadMatchData { data, error in
+            if let error = error{
+                self.error(error)
+            }
+            else if let data = data{
+                DispatchQueue.main.async {
+                    self.handler?.handle(data: data, fromPlayer: player)
+                }
+            }
+            else{
+                DispatchQueue.main.async {
+                    self.handler?.handle(data: Data(), fromPlayer: player)
+                }
+            }
+        }
+    }
+    
+    fileprivate override func cancelInternal(reason : DisconnectedReason){
+        if let match = self._match {
+            self._match = nil
+            match.remove(completionHandler: {error in})
+            self.updateState(.disconnected(reason: reason))
+        }
+        
+        
     }
 }
 

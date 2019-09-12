@@ -71,15 +71,15 @@ class ViewController: UIViewController, MatchHandler {
             return
         }
         
+        self.createMatch()
         
     }
     
     func createMatch(){
         let match = try! GCConnection.shared.findMatch(minPlayers: 2, maxPlayers: 2, withTimeout: .now() + .seconds(30))
-        
+//        let match = try! GCConnection.shared.findTurnbasedMatch(minPlayers: 2, maxPlayers: 2, withTimeout: .now() + .seconds(30))
         match.handler = self
-        
-        
+        self._startBtn.isHidden = true
     }
     
     func handle(_ error : Error){
@@ -87,12 +87,20 @@ class ViewController: UIViewController, MatchHandler {
     }
     func handle(_ state : MatchState){
         print("match", "new state", state)
+        switch state {
+        case .disconnected(_):
+            self._startBtn.isHidden = false
+        default:
+            return
+        }
+        
     }
     func handle(data : Data, fromPlayer : GKPlayer){
         print("match", "new data", "player", fromPlayer.displayName)
     }
     func handle(playerDisconnected : GKPlayer){
         print("match", "player disconnect", playerDisconnected.displayName)
+        
     }
 
 

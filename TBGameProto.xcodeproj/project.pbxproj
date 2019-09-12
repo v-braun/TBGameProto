@@ -13,6 +13,7 @@
 		2A02DCA22313C13F00F71048 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A02DCA12313C13F00F71048 /* Assets.xcassets */; };
 		2A02DCA52313C13F00F71048 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A02DCA32313C13F00F71048 /* LaunchScreen.storyboard */; };
 		2A3519832313C4BA004D8C79 /* GCConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3519822313C4BA004D8C79 /* GCConnection.swift */; };
+		2ADC3742232B0A500082ABF0 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ADC3741232B0A500082ABF0 /* GameKit.framework */; };
 		2FA922F69A185116EDEE17E4 /* Pods_TBGameProto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8099EA79E088A91D14E75529 /* Pods_TBGameProto.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		2A02DCA42313C13F00F71048 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A02DCA62313C13F00F71048 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A3519822313C4BA004D8C79 /* GCConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCConnection.swift; sourceTree = "<group>"; };
+		2ADC3741232B0A500082ABF0 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		4E1BDD05C479949436DB1431 /* Pods-TBGameProto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TBGameProto.release.xcconfig"; path = "Pods/Target Support Files/Pods-TBGameProto/Pods-TBGameProto.release.xcconfig"; sourceTree = "<group>"; };
 		8099EA79E088A91D14E75529 /* Pods_TBGameProto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TBGameProto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC3F9D4708B6F568C317F41B /* Pods-TBGameProto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TBGameProto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TBGameProto/Pods-TBGameProto.debug.xcconfig"; sourceTree = "<group>"; };
@@ -36,6 +38,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FA922F69A185116EDEE17E4 /* Pods_TBGameProto.framework in Frameworks */,
+				2ADC3742232B0A500082ABF0 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +48,7 @@
 		152CCC85265FB5769EA3448F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2ADC3741232B0A500082ABF0 /* GameKit.framework */,
 				8099EA79E088A91D14E75529 /* Pods_TBGameProto.framework */,
 			);
 			name = Frameworks;
@@ -125,6 +129,11 @@
 				TargetAttributes = {
 					2A02DC962313C13D00F71048 = {
 						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.GameCenter.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -357,11 +366,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MT53UGXK6Y;
 				INFOPLIST_FILE = TBGameProto/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = vbr.TBGameProto2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vbr.TBGameProto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -376,11 +386,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MT53UGXK6Y;
 				INFOPLIST_FILE = TBGameProto/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = vbr.TBGameProto2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vbr.TBGameProto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
