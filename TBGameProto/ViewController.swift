@@ -15,6 +15,7 @@ class ViewController: UIViewController, MatchHandler {
 
     @IBOutlet weak var _startBtn: PMSuperButton!
     
+    private var _match : RealtimeMatch? = nil
     
     override func viewDidLoad() {
         
@@ -71,14 +72,23 @@ class ViewController: UIViewController, MatchHandler {
             return
         }
         
-        self.createMatch()
+        if _match == nil {
+            self.createMatch()
+        }
+        else{
+            let msg = "hi".data(using: .utf8)!
+            try? _match?.broadCast(data: msg, withMode: .reliable)
+        }
+        
         
     }
     
     func createMatch(){
-        let match = try! GCConnection.shared.findMatch(minPlayers: 2, maxPlayers: 2, withTimeout: .now() + .seconds(30))
+        _match = try! GCConnection.shared.findMatch(minPlayers: 2, maxPlayers: 2, withTimeout: .now() + .seconds(90))
+//        _match = try! GCConnection.shared.findRealtimeMatch(withVC: self, minPlayers: 2, maxPlayers: 2)
+        
 //        let match = try! GCConnection.shared.findTurnbasedMatch(minPlayers: 2, maxPlayers: 2, withTimeout: .now() + .seconds(30))
-        match.handler = self
+        _match?.handler = self
         self._startBtn.isHidden = true
     }
     
@@ -86,20 +96,25 @@ class ViewController: UIViewController, MatchHandler {
         showMsg(txt: "match err: \(error)", .error)
     }
     func handle(_ state : MatchState){
-        print("match", "new state", state)
+        print("GCConn: match", "new state", state)
         switch state {
         case .disconnected(_):
             self._startBtn.isHidden = false
+        case .connected:
+            self._startBtn.isHidden = false
+            self._startBtn.titleLabel?.text = "send hi"
         default:
             return
         }
         
     }
     func handle(data : Data, fromPlayer : GKPlayer){
-        print("match", "new data", "player", fromPlayer.displayName)
+        print("GCConn: match", "new data", "player", fromPlayer.displayName)
+        let msg = String(data: data, encoding: .utf8)!
+        showMsg(txt: msg, .notification)
     }
     func handle(playerDisconnected : GKPlayer){
-        print("match", "player disconnect", playerDisconnected.displayName)
+        print("GCConn: match", "player disconnect", playerDisconnected.displayName)
         
     }
 

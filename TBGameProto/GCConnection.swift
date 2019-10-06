@@ -1,3 +1,9 @@
+// see this API's for alternative match making
+//https://developer.apple.com/documentation/gamekit/gkmatchmaker/1520930-queryactivity
+//https://developer.apple.com/documentation/gamekit/gkmatchmaker/1520518-finishmatchmaking
+//https://developer.apple.com/documentation/gamekit/gkmatchmaker/1520561-addplayerstomatch
+
+
 //
 //  GCConnection.swift
 //  GCConnection
@@ -72,7 +78,7 @@ public class GCConnection{
     
     fileprivate func log(_ items : Any...){
         let itemString = items.map { String(describing: $0) }.joined(separator: " ")
-        print(itemString)
+        print("GCConn: " + itemString)
     }
     
     public func authenticate(){
@@ -109,6 +115,25 @@ public class GCConnection{
         }
     }
     
+    func findRealtimeMatch(withVC : ViewController, minPlayers: Int, maxPlayers: Int) throws -> RealtimeMatch{
+        if activeMatch != nil {
+            throw createError(withMessage: "there is already an active match")
+        }
+        
+        let request = GKMatchRequest()
+        request.minPlayers = minPlayers
+        request.maxPlayers = maxPlayers
+        request.playerGroup = 1
+//        request.inviteMessage = "hi"
+        
+        let result = RealtimeMatch(rq: request)
+        result.findWithViewController(parentVC: withVC)
+        
+        _currentMatch = result
+        
+        return result
+    }
+    
     func findMatch(minPlayers: Int, maxPlayers: Int) throws -> RealtimeMatch{
         let defaultTimeout : DispatchTime = .now() + .seconds(60)
         let result = try findMatch(minPlayers: minPlayers, maxPlayers: maxPlayers, withTimeout: defaultTimeout )
@@ -124,6 +149,8 @@ public class GCConnection{
         let request = GKMatchRequest()
         request.minPlayers = minPlayers
         request.maxPlayers = maxPlayers
+        request.playerGroup = 1
+//        request.inviteMessage = "hi"
         
         let result = RealtimeMatch(rq: request, matchMaker: GKMatchmaker.shared())
         result.find(timeout: withTimeout)
@@ -142,6 +169,8 @@ public class GCConnection{
         let request = GKMatchRequest()
         request.minPlayers = minPlayers
         request.maxPlayers = maxPlayers
+        
+        
 
         let result = TurnBasedMatch(rq: request)
         result.find(timeout: withTimeout)
@@ -191,15 +220,18 @@ public class TurnBasedMatch : MatchBase, GKLocalPlayerListener{
         })
         
         self.state = .pending
+        // see this answer:
+        // https://stackoverflow.com/questions/44864598/gkturnbasedmatch-after-creating-joining-a-match-prints-2nd-player-status-as-matc
         
+        // we have to start a turn to make this match available to others :-(
         GKTurnBasedMatch.find(for: _request, withCompletionHandler:{ (match, err) in
             if let err = err {
                 self.error(err)
             }
             else if let match = match {
                 self._match = match
-                print("player-0", match.participants[0].player?.displayName)
-                print("player-1", match.participants[1].player?.displayName)
+                print("GCConn: player-0", match.participants[0].player?.displayName)
+                print("GCConn: player-1", match.participants[1].player?.displayName)
                 GKLocalPlayer.local.register(self)
             }
             else{
@@ -209,14 +241,14 @@ public class TurnBasedMatch : MatchBase, GKLocalPlayerListener{
     }
     
     public func player(_ player: GKPlayer, didRequestMatchWithRecipients recipientPlayers: [GKPlayer]) {
-        print("didRequestMatchWithRecipients")
+        print("GCConn: didRequestMatchWithRecipients")
         self.updateState(.connected)
     }
     public func player(_ player: GKPlayer, didRequestMatchWithOtherPlayers playersToInvite: [GKPlayer]) {
-        print("didRequestMatchWithOtherPlayers")
+        print("GCConn: didRequestMatchWithOtherPlayers")
     }
     public func player(_ player: GKPlayer, didAccept invite: GKInvite) {
-        print("didAccept invide")
+        print("GCConn: didAccept invide")
     }
     
     
@@ -265,10 +297,11 @@ public class TurnBasedMatch : MatchBase, GKLocalPlayerListener{
 }
 
 
-public class RealtimeMatch : MatchBase, GKMatchDelegate{
+public class RealtimeMatch : MatchBase, GKMatchDelegate, GKMatchmakerViewControllerDelegate{
     
     fileprivate var _matchMaker : GKMatchmaker
     fileprivate var _match : GKMatch?
+    fileprivate var _vc : GKMatchmakerViewController?
     
     public var players : [GKPlayer] {
         get{
@@ -291,25 +324,61 @@ public class RealtimeMatch : MatchBase, GKMatchDelegate{
         super.init(rq: rq)
     }
     
+    fileprivate func findWithViewController(parentVC : ViewController){
+        self.state = .pending
+        
+        self._vc = GKMatchmakerViewController(matchRequest: self._request)!
+        self._vc!.matchmakerDelegate = self
+        parentVC.present(self._vc!, animated: true, completion: nil)
+    }
+    
+    public func matchmakerViewControllerWasCancelled(_ viewController: GKMatchmakerViewController) {
+        self.cancelInternal(reason: .cancel)
+        self._vc?.dismiss(animated: true, completion: nil)
+    }
+    
+    public func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFailWithError error: Error) {
+        self.error(error)
+        self._vc?.dismiss(animated: true, completion: nil)
+    }
+    
+    public func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFind match: GKMatch) {
+        self._vc?.dismiss(animated: true, completion: nil)
+        self._match = match
+        self._match!.delegate = self
+        self.updateState(.connected)
+        print("GCConn: received match", match.players, match.expectedPlayerCount)
+    }
+    
+    public func matchmakerViewController(_ viewController: GKMatchmakerViewController, hostedPlayerDidAccept player: GKPlayer) {
+        print("GCConn: matchmakerViewController.hostedPlayerDidAccept")
+    }
+    
+    public func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFindHostedPlayers players: [GKPlayer]) {
+        print("GCConn: matchmakerViewController.didFindHostedPlayers")
+    }
+    
     fileprivate func find(timeout : DispatchTime) {
-        DispatchQueue.main.asyncAfter(deadline: timeout, execute: {
-            switch self.state{
-            case .pending:
-                self.cancelInternal(reason: .matchMakingTimeout)
-            default:
-                return
-            }
-        })
+//        DispatchQueue.main.asyncAfter(deadline: timeout, execute: {
+//            switch self.state{
+//            case .pending:
+//                self.cancelInternal(reason: .matchMakingTimeout)
+//            default:
+//                return
+//            }
+//        })
         
         self.state = .pending
         
         self._matchMaker.findMatch(for: self._request) { (match, err) in
+            
             if let err = err {
                 self.error(err)
             }
             else if let match = match {
                 self._match = match
                 self._match!.delegate = self
+                print("GCConn: received match", match.players, match.expectedPlayerCount)
             }
             else{
                 self.error(createError(withMessage: "received unexpected nil match"))
@@ -334,7 +403,10 @@ public class RealtimeMatch : MatchBase, GKMatchDelegate{
         }
     }
     
-    
+    public func match(_ match: GKMatch, shouldReinviteDisconnectedPlayer player: GKPlayer) -> Bool{
+        print("GCConn: shouldReinviteDisconnectedPlayer")
+        return true
+    }
     
     public func match(_ match: GKMatch, player: GKPlayer, didChange state: GKPlayerConnectionState){
         guard self._match == match else {

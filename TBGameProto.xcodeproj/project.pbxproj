@@ -26,6 +26,7 @@
 		2A02DCA42313C13F00F71048 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A02DCA62313C13F00F71048 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A3519822313C4BA004D8C79 /* GCConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCConnection.swift; sourceTree = "<group>"; };
+		2A8055B2234A0C26008217E7 /* TBGameProto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TBGameProto.entitlements; sourceTree = "<group>"; };
 		2ADC3741232B0A500082ABF0 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		4E1BDD05C479949436DB1431 /* Pods-TBGameProto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TBGameProto.release.xcconfig"; path = "Pods/Target Support Files/Pods-TBGameProto/Pods-TBGameProto.release.xcconfig"; sourceTree = "<group>"; };
 		8099EA79E088A91D14E75529 /* Pods_TBGameProto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TBGameProto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +76,7 @@
 		2A02DC992313C13D00F71048 /* TBGameProto */ = {
 			isa = PBXGroup;
 			children = (
+				2A8055B2234A0C26008217E7 /* TBGameProto.entitlements */,
 				2A02DC9A2313C13D00F71048 /* AppDelegate.swift */,
 				2A02DC9C2313C13D00F71048 /* ViewController.swift */,
 				2A02DC9E2313C13E00F71048 /* Main.storyboard */,
@@ -363,6 +365,7 @@
 			baseConfigurationReference = CC3F9D4708B6F568C317F41B /* Pods-TBGameProto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TBGameProto/TBGameProto.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MT53UGXK6Y;
 				INFOPLIST_FILE = TBGameProto/Info.plist;
@@ -383,6 +386,7 @@
 			baseConfigurationReference = 4E1BDD05C479949436DB1431 /* Pods-TBGameProto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TBGameProto/TBGameProto.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MT53UGXK6Y;
 				INFOPLIST_FILE = TBGameProto/Info.plist;
