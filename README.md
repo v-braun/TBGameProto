@@ -1,5 +1,5 @@
 # TBGameProto
-> GameKit / GameCenter - turn based game - experiment
+> GameKit / GameCenter - turn based / realtime game - experiment
 
 By [v-braun - viktor-braun.de](https://viktor-braun.de).
 
