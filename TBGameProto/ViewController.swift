@@ -23,7 +23,6 @@ class ViewController: UIViewController, MatchHandler {
         super.viewDidLoad()
         
         
-        
         _startBtn.touchUpInside(action: {
             self.startTouched();
         })
@@ -102,7 +101,7 @@ class ViewController: UIViewController, MatchHandler {
             self._startBtn.isHidden = false
         case .connected:
             self._startBtn.isHidden = false
-            self._startBtn.titleLabel?.text = "send hi"
+            self._startBtn.setTitle("send hi", for: .normal)
         default:
             return
         }
